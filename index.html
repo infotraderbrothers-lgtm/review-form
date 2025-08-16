@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Experience - Trader Brothers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .form-section {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #e6e8ff;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .star {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .star.active {
+            color: #ffd700;
+        }
+        
+        .star:hover {
+            color: #ffd700;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .privacy-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 60px 30px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #4CAF50;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            animation: checkmarkPulse 0.6s ease-in-out;
+        }
+        
+        @keyframes checkmarkPulse {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 600px) {
+            .form-container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header, .content {
+                padding: 30px 20px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>Thank You for Choosing Trader Brothers</h1>
+            <p>Your experience means everything to us</p>
+        </div>
+        
+        <div class="content" id="form-content">
+            <div class="greeting">
+                Hi <span id="customer-name-display">[Customer Name]</span>!<br><br>
+                We hope our work has exceeded your expectations and brought your vision to life. Your honest feedback helps us continue delivering the quality work our clients deserve.
+            </div>
+            
+            <div class="form-section">
+                <form id="reviewForm" action="https://hook.eu2.make.com/kg3a3g1knw2c8tw332kga1rjdofrg505" method="POST">
+                    <!-- Hidden fields populated from URL -->
+                    <input type="hidden" name="customer_id" id="customer_id">
+                    <input type="hidden" name="order_id" id="order_id">
+                    <input type="hidden" name="service_title" id="service_title">
+                    
+                    <div class="form-group">
+                        <label for="customer_name">Your Name</label>
+                        <input type="text" id="customer_name" name="customer_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Overall Rating</label>
+                        <div class="rating-container">
+                            <div class="star-rating">
+                                <span class="star" data-rating="1">★</span>
+                                <span class="star" data-rating="2">★</span>
+                                <span class="star" data-rating="3">★</span>
+                                <span class="star" data-rating="4">★</span>
+                                <span class="star" data-rating="5">★</span>
+                            </div>
+                            <span id="rating-text">Click to rate</span>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="review_title">Review Title</label>
+                        <input type="text" id="review_title" name="review_title" placeholder="Sum up your experience in a few words" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="review_text">Your Review</label>
+                        <textarea id="review_text" name="review_text" placeholder="Share your detailed experience with us..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recommend">Would you recommend us to others?</label>
+                        <select id="recommend" name="recommend" required>
+                            <option value="">Please select...</option>
+                            <option value="definitely">Definitely</option>
+                            <option value="probably">Probably</option>
+                            <option value="maybe">Maybe</option>
+                            <option value="probably_not">Probably not</option>
+                            <option value="definitely_not">Definitely not</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Review</button>
+                </form>
+            </div>
+            
+            <div class="privacy-note">
+                Your review may be displayed publicly to help other customers. We will never share your personal information without your consent.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Thank you for taking the time to share your feedback with Trader Brothers.</p>
+            <p>Your trust in our craftsmanship means the world to us.</p>
+            <p style="margin-top: 20px;">
+                <strong>Trader Brothers</strong><br>
+                Email: traderbrotherslimited@gmail.com | Phone: (555) 123-4567
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters and populate form
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Populate form with URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const customerName = getUrlParameter('customer_name');
+            const customerId = getUrlParameter('customer_id');
+            const orderId = getUrlParameter('order_id');
+            const service = getUrlParameter('service');
+            
+            // Fill hidden fields
+            document.getElementById('customer_id').value = customerId;
+            document.getElementById('order_id').value = orderId;
+            document.getElementById('service_title').value = service;
+            
+            // Fill visible fields
+            document.getElementById('customer_name').value = customerName;
+            
+            // Update greeting
+            if (customerName) {
+                document.getElementById('customer-name-display').textContent = customerName;
+            }
+        });
+        
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+        const ratingText = document.getElementById('rating-text');
+        
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                const rating = index + 1;
+                ratingInput.value = rating;
+                updateStarDisplay(rating);
+                updateRatingText(rating);
+            });
+            
+            star.addEventListener('mouseover', () => {
+                updateStarDisplay(index + 1);
+            });
+        });
+        
+        document.querySelector('.star-rating').addEventListener('mouseleave', () => {
+            updateStarDisplay(ratingInput.value);
+        });
+        
+        function updateStarDisplay(rating) {
+            stars.forEach((star, index) => {
+                star.classList.toggle('active', index < rating);
+            });
+        }
+        
+        function updateRatingText(rating) {
+            const texts = {
+                1: 'Poor',
+                2: 'Fair', 
+                3: 'Good',
+                4: 'Very Good',
+                5: 'Excellent'
+            };
+            ratingText.textContent = texts[rating] || 'Click to rate';
+        }
+        
+        // Form submission handling
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Prepare form data
+            const formData = new FormData(this);
+            
+            // Submit to Make.com webhook
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('form-content').innerHTML = `
+                        <div class="success-message">
+                            <div class="success-icon">✓</div>
+                            <h2 style="color: #333; margin-bottom: 20px; font-weight: 300;">Thank You!</h2>
+                            <p style="color: #666; font-size: 18px; margin-bottom: 15px;">Your review has been submitted successfully.</p>
+                            <p style="color: #666; font-size: 16px; margin-bottom: 15px;">We truly appreciate you taking the time to share your experience.</p>
+                            <p style="color: #666; font-size: 16px;">Your feedback helps us continue delivering exceptional service.</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                // Error handling
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                alert('Sorry, there was an error submitting your review. Please try again or contact us directly.');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
